@@ -1,0 +1,19 @@
+Cole Easton
+Section 3
+
+Project 5: Flocking
+	In this project, fish swim in a school and a turtle follows a path.  You can switch cameras from one following the back of the school to the front of the school to one the views the whole scene to one that views the turtle.
+
+User interaction: 
+	Use D to toggle Gizmos
+	Press C to Cycle camera
+
+Above and beyond features: 
+	While not a requirement, alignment and cohesion are based on proximity, so I have some dynamic flockign behavior.  Something to note is that when viewing the flock from above, it may look like the fich intersect, but they do not, what is happening is that fish far below other fish are less affected by then and are not repelled or strongly influenced by their angle.
+
+Sources: 
+	Sand: https://www.textures.com/download/3dscans0008/125555?q=sand
+	All other assets and textures: https://assetstore.unity.com/packages/3d/environments/simplistic-low-poly-nature-93894
+
+Known issues:
+	While Gizmos display in the game view in the engine, they don't display in the executbale, and I'm not sure why.

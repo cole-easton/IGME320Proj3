@@ -1,0 +1,71 @@
+{
+    "name": "PS4Controls",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "105a5c4f-92f4-4df7-9020-14875fa045a7",
+            "actions": [
+                {
+                    "name": "L2",
+                    "type": "Value",
+                    "id": "f78e6031-89fa-434d-bc29-4ea3496722a2",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "R2",
+                    "type": "Value",
+                    "id": "ba24baf2-a827-4eff-915a-45d1e7727360",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Left-Right",
+                    "type": "Value",
+                    "id": "6f926af5-59f0-4682-bdf8-895d0bad52a9",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0a0fbd80-c521-41e4-a3d5-5bbfd318f9be",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "20381a74-b1fb-45b1-a82f-c3e3a1b52f8d",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f2557676-c084-45c7-aa31-7f476ef1ec59",
+                    "path": "<Gamepad>/leftStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left-Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
