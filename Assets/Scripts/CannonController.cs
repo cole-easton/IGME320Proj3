@@ -29,6 +29,9 @@ public class CannonController : MonoBehaviour
 	private LineRenderer lr;
 	private ChargedObject[] chargedObjects;
 	private Vector3 bulletVelocity;
+
+	private GameObject receptor;	// the goal
+
 	// Start is called before the first frame update
 	void Start() { 
         chargedObjects = FindObjectsOfType(typeof(ChargedObject)) as ChargedObject[];
@@ -37,6 +40,8 @@ public class CannonController : MonoBehaviour
 		lr = GetComponent<LineRenderer>();
 		lr.useWorldSpace = true;
 		particleIndex = 0;
+
+		receptor = GameObject.FindGameObjectWithTag("Receptor");
 	}
 
     // Update is called once per frame
@@ -74,6 +79,13 @@ public class CannonController : MonoBehaviour
 					//if particles get inside the charged objects, chaotic and framerate-dependent behavior can result.  This is therefore forbidden.
 					particleIndex = 0;
 					recycling = false;
+				}
+
+				// check the particle against the goal receptor
+				if ((particles[i].Position - receptor.transform.position).sqrMagnitude
+					< receptor.transform.localScale.x * receptor.transform.localScale.y / 4)
+				{
+					Debug.Log("You win!!!!!!!");
 				}
 			}
 			particles[i].Position += particles[i].Velocity * Time.deltaTime;
