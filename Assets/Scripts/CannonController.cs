@@ -30,7 +30,10 @@ public class CannonController : MonoBehaviour
 	private ChargedObject[] chargedObjects;
 	private Vector3 bulletVelocity;
 
-	private GameObject receptor;	// the goal
+	private GameObject receptor;    // the goal
+
+	public int cannonRotation = 0;
+	public bool canRotate = true;
 
 	// Start is called before the first frame update
 	void Start() { 
@@ -49,6 +52,7 @@ public class CannonController : MonoBehaviour
     {
 		bool shooting = true; // Input.GetMouseButton(0);
 
+		/*
 		Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		mousePos.z = 0;
 		transform.rotation = Quaternion.AngleAxis(180/(Mathf.PI)*Mathf.Atan2(mousePos.y - transform.position.y, mousePos.x - transform.position.x), Vector3.forward);
@@ -63,6 +67,36 @@ public class CannonController : MonoBehaviour
 			}
 			
 		}
+		*/
+		// new code starts
+		if (canRotate)
+		{
+			if (Input.GetKey(KeyCode.UpArrow) && cannonRotation < 90)
+			{
+				cannonRotation++;
+			}
+			if (Input.GetKey(KeyCode.DownArrow) && cannonRotation > -90)
+			{
+				cannonRotation--;
+			}
+		}
+
+		Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		mousePos.z = 0;
+		transform.rotation = Quaternion.Euler(0, 0, cannonRotation);
+		float radius = Vector3.Distance(tip.transform.position, transform.position);
+		if (shooting && Time.time % FirePeriod - Time.deltaTime < 0)
+		{
+			particles[particleIndex++] = new Particle(tip.transform.position,
+				launchSpeed * new Vector3(radius * Mathf.Cos(Mathf.Deg2Rad * cannonRotation), radius * Mathf.Sin(Mathf.Deg2Rad * cannonRotation)).normalized);
+			if (particleIndex >= ParticleLimit)
+			{
+				particleIndex = 0;
+				recycling = true;
+			}
+
+		}
+		// new code ends
 		for (int i = 0; i < (recycling?ParticleLimit:particleIndex); i++)
 		{
 			Vector3 displacement;
