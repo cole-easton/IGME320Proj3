@@ -57,7 +57,7 @@ public class CannonController : MonoBehaviour
 	}
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 		bool shooting = true; // Input.GetMouseButton(0);
 
@@ -94,7 +94,7 @@ public class CannonController : MonoBehaviour
 		mousePos.z = 0;
 		transform.rotation = Quaternion.Euler(0, 0, cannonRotation);
 		float radius = Vector3.Distance(tip.transform.position, transform.position);
-		if (shooting && Time.time % FirePeriod - Time.deltaTime < 0)
+		if (shooting && Time.time % FirePeriod - Time.fixedDeltaTime < 0)
 		{
 			particles[particleIndex++] = new Particle(tip.transform.position,
 				launchSpeed * new Vector3(radius * Mathf.Cos(Mathf.Deg2Rad * cannonRotation), radius * Mathf.Sin(Mathf.Deg2Rad * cannonRotation)).normalized);
@@ -143,7 +143,7 @@ public class CannonController : MonoBehaviour
 				OnReceptorReached?.Invoke(this, new EventArgs());
 			}
 
-			particles[i].Position += particles[i].Velocity * Time.deltaTime;
+			particles[i].Position += particles[i].Velocity * Time.fixedDeltaTime;
 		}
 
 		Vector3[] positions = new Vector3[(recycling?ParticleLimit:particleIndex)+ (shooting ? 1 : 0)];
