@@ -19,11 +19,13 @@ public class CannonController : MonoBehaviour
 	public GameObject tip;
 	public float launchSpeed;
 	public float electricForceConstant = 1;
+	public float rotationSpeed = 0.1f;
 
 	const int ParticleLimit = 250;
 	const float FirePeriod = 0.02f; //seconds between each paerticle shot 
 
 	private Particle[] particles;
+	private BoxCollider2D[] walls;
 	private int particleIndex;
 	private bool recycling;
 	private LineRenderer lr;
@@ -32,12 +34,17 @@ public class CannonController : MonoBehaviour
 
 	private GameObject receptor;    // the goal
 
-	public int cannonRotation = 0;
+	public float cannonRotation = 0;
 	public bool canRotate = true;
 
 	// Start is called before the first frame update
 	void Start() { 
         chargedObjects = FindObjectsOfType(typeof(ChargedObject)) as ChargedObject[];
+		Wall[] wallScripts = FindObjectsOfType(typeof(Wall)) as Wall[];
+		walls = new BoxCollider2D[wallScripts.Length];
+		for (int i = 0; i < wallScripts.Length; i++) {
+			walls[i] = wallScripts[i].gameObject.GetComponent<BoxCollider2D>();
+		}
 		particles = new Particle[ParticleLimit];
 		recycling = false;
 		lr = GetComponent<LineRenderer>();
@@ -73,11 +80,11 @@ public class CannonController : MonoBehaviour
 		{
 			if (Input.GetKey(KeyCode.UpArrow) && cannonRotation < 90)
 			{
-				cannonRotation++;
+				cannonRotation+=rotationSpeed;
 			}
 			if (Input.GetKey(KeyCode.DownArrow) && cannonRotation > -90)
 			{
-				cannonRotation--;
+				cannonRotation-=rotationSpeed;
 			}
 		}
 
@@ -114,14 +121,25 @@ public class CannonController : MonoBehaviour
 					particleIndex = 0;
 					recycling = false;
 				}
+				
+			}
 
-				// check the particle against the goal receptor
-				if ((particles[i].Position - receptor.transform.position).sqrMagnitude
-					< receptor.transform.localScale.x * receptor.transform.localScale.y / 4)
+			foreach(BoxCollider2D wall in walls)
+			{
+				if (wall.OverlapPoint(particles[i].Position))
 				{
-					Debug.Log("You win!!!!!!!");
+					particleIndex = 0;
+					recycling = false;
 				}
 			}
+
+			// check the particle against the goal receptor
+			if ((particles[i].Position - receptor.transform.position).sqrMagnitude
+				< receptor.transform.localScale.x * receptor.transform.localScale.y / 4)
+			{
+				Debug.Log("You win!!!!!!!");
+			}
+
 			particles[i].Position += particles[i].Velocity * Time.deltaTime;
 		}
 
