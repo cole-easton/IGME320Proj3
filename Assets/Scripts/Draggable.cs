@@ -44,7 +44,7 @@ public class Draggable : MonoBehaviour
 		myRB = GetComponent<Rigidbody2D>();
 	}
 
-	private void Update()
+	private void FixedUpdate()
 	{
 		Debug.Log("mousePosWorld: " + GetMousePosWorld());
 		if (mouseOffset != null)
@@ -85,8 +85,8 @@ public class Draggable : MonoBehaviour
 			//myRB.AddForce(force);
 
 			var destination = mousePos2D - MouseOffset;
-			var projectedDestination = myRB.velocity * Time.deltaTime + myRB.position;
-			var velocityAdjustment = (destination - projectedDestination) / Time.deltaTime;
+			var projectedDestination = myRB.velocity * Time.fixedDeltaTime + myRB.position;
+			var velocityAdjustment = (destination - projectedDestination) / Time.fixedDeltaTime;
 			myRB.velocity += velocityAdjustment * (1f - float.Epsilon);
 
 			//var destination = new Vector2Decimal(mousePos2D) - new Vector2Decimal(MouseOffset);
