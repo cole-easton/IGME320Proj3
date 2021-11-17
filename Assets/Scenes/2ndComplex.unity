@@ -760,6 +760,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: PosObst
       objectReference: {fileID: 0}
+    - target: {fileID: 4570841928644061975, guid: e0062ae460c00474ba6a62ae2805a269,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570841928644061975, guid: e0062ae460c00474ba6a62ae2805a269,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.922265
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570841928644061975, guid: e0062ae460c00474ba6a62ae2805a269,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.0990566
+      objectReference: {fileID: 0}
     - target: {fileID: 9209374725934190403, guid: e0062ae460c00474ba6a62ae2805a269,
         type: 3}
       propertyPath: m_LocalPosition.x
