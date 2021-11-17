@@ -35,6 +35,8 @@ public class CannonController : MonoBehaviour
 	public int cannonRotation = 0;
 	public bool canRotate = true;
 
+	public event EventHandler OnReceptorReached;
+
 	// Start is called before the first frame update
 	void Start() { 
         chargedObjects = FindObjectsOfType(typeof(ChargedObject)) as ChargedObject[];
@@ -120,6 +122,7 @@ public class CannonController : MonoBehaviour
 					< receptor.transform.localScale.x * receptor.transform.localScale.y / 4)
 				{
 					Debug.Log("You win!!!!!!!");
+					OnReceptorReached?.Invoke(this, new EventArgs());
 				}
 			}
 			particles[i].Position += particles[i].Velocity * Time.deltaTime;
