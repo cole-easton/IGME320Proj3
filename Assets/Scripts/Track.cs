@@ -207,7 +207,7 @@ public class Track : MonoBehaviour
 	/// <summary>
 	/// Old Version, keep as failsafe.
 	/// </summary>
-	/// <param name="p"></param>
+	/// <param name="p">Point</param>
 	/// <param name="intersectionPoint"></param>
 	/// <returns></returns>
 	public Tuple<Vector2, Vector2> GetClosestTrackDeprecated(Vector2 p, out Vector2 intersectionPoint)
