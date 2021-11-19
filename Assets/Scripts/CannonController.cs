@@ -162,7 +162,7 @@ public class CannonController : MonoBehaviour
 				Debug.LogError($"Accessing index {particleIndex - j - 1 + (shooting ? 1 : 0)} in positions, whose length is {positions.Length}");
 				Debug.LogError($"Accessing index {j} in particles, whose length is {positions.Length}");
 
-				UnityEditor.EditorApplication.isPlaying = false;
+				//UnityEditor.EditorApplication.isPlaying = false;
 			}
 			j--;
 		}

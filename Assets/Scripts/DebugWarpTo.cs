@@ -34,7 +34,7 @@ namespace Proj3
 		/// </summary>
 		[SerializeField]
 		[Tooltip("Default respawn text.")]
-		private string respawnText = "Manipulate the enviroment to get the particle stream to the receptor.";
+		private string respawnText = "Click and drag to get the particle stream to the receptor. Press R to reset.\nIf the cannon can be moved, you can control it with the arrow keys.";
 
 		/// <summary>
 		/// Default stage clear text.
@@ -82,18 +82,25 @@ namespace Proj3
 		// Update is called once per frame
 		void Update()
 		{
-			if (Input.GetKeyDown(KeyCode.R) && levelCleared)
+			if (Input.GetKeyDown(KeyCode.R))
 			{
-				if (respawnTextObj != null)
+				if (levelCleared)
 				{
-					respawnTextObj.text = respawnText;
+					if (respawnTextObj != null)
+					{
+						respawnTextObj.text = respawnText;
+					}
+					// Reload scene
+					//SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+					if (SceneManager.GetActiveScene().buildIndex >= SceneManager.sceneCountInBuildSettings - 1)
+						SceneManager.LoadScene(0);
+					else
+						SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 				}
-				// Reload scene
-				//SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-				if (SceneManager.GetActiveScene().buildIndex >= SceneManager.sceneCountInBuildSettings - 1)
-					SceneManager.LoadScene(0);
 				else
-					SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+				{
+					SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+				}
 			}
 		}
 	}

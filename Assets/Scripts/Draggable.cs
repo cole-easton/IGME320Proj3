@@ -42,6 +42,17 @@ public class Draggable : MonoBehaviour
 	void Start()
 	{
 		myRB = GetComponent<Rigidbody2D>();
+		myRB.freezeRotation = true;
+
+		// Distingish Locked And Unlocked elements
+		var rend = GetComponent<SpriteRenderer>();
+		if (rend != null)
+			rend.color = Color.white;
+		//var l = gameObject.AddComponent<Light>();
+		//l.type = LightType.Point;
+		//float r = Math.Max(GetComponent<Collider2D>().bounds.extents.x, GetComponent<Collider2D>().bounds.extents.y);
+		//r *= 2f;
+		//l.range = r;
 	}
 
 	private void FixedUpdate()
@@ -105,6 +116,7 @@ public class Draggable : MonoBehaviour
 		else
 		{
 			myRB.position = mousePos2D - MouseOffset;
+			myRB.velocity = Vector2.zero;
 		}
 	}
 
