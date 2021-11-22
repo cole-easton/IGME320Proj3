@@ -57,7 +57,6 @@ public class Draggable : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		Debug.Log("mousePosWorld: " + GetMousePosWorld());
 		if (mouseOffset != null)
 			OnMouseDragPsuedo();
 	}
