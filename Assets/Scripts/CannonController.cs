@@ -10,6 +10,7 @@ public class CannonController : MonoBehaviour
 	public float launchSpeed;
 	public float electricForceConstant = 1;
 	public float rotationSpeed = 0.1f;
+	public bool allowPolaritySwitching = false;
 
 	const int ParticleLimit = 250;
 
@@ -18,6 +19,7 @@ public class CannonController : MonoBehaviour
 	private LineRenderer lr;
 	private ChargedObject[] chargedObjects;
 	private Vector3 bulletVelocity;
+	private bool posPolarity;
 
 	private GameObject receptor;    // the goal
 
@@ -41,6 +43,25 @@ public class CannonController : MonoBehaviour
 
 		receptor = GameObject.FindGameObjectWithTag("Receptor");
 		radius = Vector3.Distance(tip.transform.position, transform.position); //class wide so we don't recalculate every frame
+		posPolarity = false;
+		lr.startColor = lr.endColor = new Color(.38f, .51f, .87f);
+	}
+
+	void Update()
+	{
+
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			posPolarity = !posPolarity;
+			if (posPolarity)
+			{
+				lr.startColor = lr.endColor = new Color(.93f, 0f, 0f);
+			}
+			else
+			{
+				lr.startColor = lr.endColor = new Color(.38f, .51f, .87f);
+			}
+		}
 	}
 
     // Update is called once per frame
@@ -93,7 +114,7 @@ public class CannonController : MonoBehaviour
 				displacement = positions[posIndex] - chargedObject.gameObject.transform.position;
 				displacement.z = 0;
 				velocity += electricForceConstant* chargedObject.gameObject.transform.localScale.x* chargedObject.transform.localScale.y
-				 * displacement / Mathf.Pow(displacement.magnitude, 3) * (chargedObject.positive ? -1 : 1);
+				 * displacement / Mathf.Pow(displacement.magnitude, 3) * (chargedObject.positive ? -1 : 1) * (posPolarity? -1 : 1) ;
 				if ((positions[posIndex] - chargedObject.transform.position).sqrMagnitude
 					< chargedObject.gameObject.transform.localScale.x * chargedObject.transform.localScale.y / 4)
 				{
