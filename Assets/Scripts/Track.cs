@@ -27,8 +27,8 @@ public class Track : MonoBehaviour
 			var numOut = lr.GetPositions(ps);
 			for (int i = 0; i < ps.Length; i++)
 			{
-				ps[i] = (lr.useWorldSpace) ? ps[i] : transform.TransformPoint(ps[i]);
 				ps2[i] = ps[i];
+				ps2[i] = (lr.useWorldSpace) ? ps2[i] : (Vector2)transform.TransformPoint(ps2[i]);
 			}
 			if (lr.positionCount != numOut)
 				Debug.LogWarning($"Track.cs, line 15, object {name}, incorrect number of positions returned.");
