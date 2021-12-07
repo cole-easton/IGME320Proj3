@@ -51,6 +51,10 @@ namespace Proj3
 		//[Tooltip("Levels, in order.")]
 		//private Scene[] levels;
 
+		[SerializeField]
+		private GameObject levelSelectionObject;
+		private LevelSelection levelSelectionScript;
+
 		private bool levelCleared = false;
 
 		void Start()
@@ -66,6 +70,8 @@ namespace Proj3
 			//FindObjectOfType<CollectibleManager>().AllCollected += DebugWarpTo_AllCollected;
 			respawnTextObj.text = respawnText;
 			FindObjectOfType<CannonController>().OnReceptorReached += DebugWarpTo_ReceptorReached;
+
+			levelSelectionScript = levelSelectionObject.GetComponent<LevelSelection>();
 		}
 
 		private void DebugWarpTo_ReceptorReached(object sender, System.EventArgs e)
@@ -77,6 +83,7 @@ namespace Proj3
 					respawnTextObj.text = "Congratulations! You've finished! To start over, press R.";
 			}
 			levelCleared = true;
+			levelSelectionScript.SavePrefs();
 		}
 
 		// Update is called once per frame
