@@ -120,6 +120,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &107647066 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3231277403701955006, guid: 76b1c23aab2a976448def6745af1d36c,
+    type: 3}
+  m_PrefabInstance: {fileID: 548079645}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &548079645
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -267,7 +279,7 @@ GameObject:
   - component: {fileID: 732378710}
   - component: {fileID: 732378711}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Level1Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -466,7 +478,7 @@ GameObject:
   - component: {fileID: 1046207065}
   - component: {fileID: 1046207064}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: LevelSelectObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -485,6 +497,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelList: []
+  levelTextObj: {fileID: 107647066}
+  canvas: {fileID: 1240998395}
 --- !u!4 &1046207065
 Transform:
   m_ObjectHideFlags: 0
@@ -502,6 +516,12 @@ Transform:
 --- !u!224 &1124067635 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1764680564133208130, guid: 76b1c23aab2a976448def6745af1d36c,
+    type: 3}
+  m_PrefabInstance: {fileID: 548079645}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1240998395 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8228282103267261552, guid: 76b1c23aab2a976448def6745af1d36c,
     type: 3}
   m_PrefabInstance: {fileID: 548079645}
   m_PrefabAsset: {fileID: 0}

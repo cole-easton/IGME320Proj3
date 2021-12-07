@@ -83,7 +83,8 @@ namespace Proj3
 					respawnTextObj.text = "Congratulations! You've finished! To start over, press R.";
 			}
 			levelCleared = true;
-			levelSelectionScript.SavePrefs();
+			if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings - 1)
+				levelSelectionScript.SavePrefs();
 		}
 
 		// Update is called once per frame

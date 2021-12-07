@@ -2279,6 +2279,11 @@ PrefabInstance:
       propertyPath: respawnTextObj
       value: 
       objectReference: {fileID: 1857364517}
+    - target: {fileID: 4154282538128745277, guid: 1793481b3673fa94991ef7668d82fd6b,
+        type: 3}
+      propertyPath: levelSelectionObject
+      value: 
+      objectReference: {fileID: 2111536867}
     - target: {fileID: 4154282538128745278, guid: 1793481b3673fa94991ef7668d82fd6b,
         type: 3}
       propertyPath: m_Name
@@ -2357,6 +2362,52 @@ MonoBehaviour:
   alignWithTrack: 1
   track: {fileID: 151686428}
   dragDistance: 5
+--- !u!1 &2111536867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2111536869}
+  - component: {fileID: 2111536868}
+  m_Layer: 0
+  m_Name: LevelSelectObject (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2111536868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111536867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df32cdd2a5bc8a4aa7c5328b67f4a4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelList: []
+  levelTextObj: {fileID: 0}
+  canvas: {fileID: 0}
+--- !u!4 &2111536869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111536867}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.68056947, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6262386902620154199
 PrefabInstance:
   m_ObjectHideFlags: 0
