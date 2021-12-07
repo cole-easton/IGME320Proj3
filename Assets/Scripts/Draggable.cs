@@ -2,25 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-//[Flags]
-//public enum PointerState
-//{
-//	None = 0b0000,
-//	Over = 0b0001,
-//	Down = 0b0010,
-
-//	Up = 0b0000,
-//	Out = 0b0000,
-//	UpAndOut = 0b0000,
-//	UpAndOver = 0b0001,
-//	DownAndOut = 0b0010,
-//	DownAndOver = 0b0011,
-//}
-
-[RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Draggable : MonoBehaviour
 {
 	#region Fields & Properties
@@ -43,6 +27,8 @@ public class Draggable : MonoBehaviour
 	{
 		myRB = GetComponent<Rigidbody2D>();
 		myRB.freezeRotation = true;
+
+		origScale = transform.localScale;
 
 		// Distingish Locked And Unlocked elements
 		var rend = GetComponent<SpriteRenderer>();
@@ -123,5 +109,28 @@ public class Draggable : MonoBehaviour
 	{
 		myRB.velocity = Vector2.zero;
 		mouseOffset = null;
+		transform.localScale = origScale;
+	}
+
+	/// <summary>
+	/// Used to store scale to revert to after mouse exits collider.
+	/// </summary>
+	private Vector3 origScale;
+	/// <summary>
+	/// The amount to scale the object by when mouse is hovering.
+	/// </summary>
+	[SerializeField]
+	[Tooltip("The amount to scale the object by when mouse is hovering.")]
+	private float hoverScaleFactor = 1.5f;
+	private void OnMouseEnter()
+	{
+		//origScale = transform.localScale;
+		transform.localScale = origScale * hoverScaleFactor;
+	}
+	private void OnMouseExit()
+	{
+		// If it's not being dragged, revert scale
+		if (mouseOffset == null)
+			transform.localScale = origScale;
 	}
 }
