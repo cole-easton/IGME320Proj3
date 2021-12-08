@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 namespace Proj3
 {
@@ -46,6 +49,9 @@ namespace Proj3
                     if (i == 0)
                     {
                         level1ButtonText.GetComponent<UnityEngine.UI.Text>().text = levelList[i];
+                        //string[] buttonText = level1ButtonText.GetComponent<UnityEngine.UI.Text>().text.Split(' ');
+                        level1Button.GetComponent<ButtonBehavior>().levelNumber = i + 1;
+                        //level1Button.GetComponent<ButtonBehavior>().levelNumber = int.Parse(buttonText[1]);
                         buttonList.Add(level1Button);
                     }
                     else
@@ -57,6 +63,10 @@ namespace Proj3
                         newLevelButton.GetComponent<RectTransform>().localPosition = buttonPos;
                         */
                         newLevelButton.GetComponentInChildren<UnityEngine.UI.Text>().text = levelList[i];
+                        //string[] buttonText = newLevelButton.GetComponent<UnityEngine.UI.Text>().text.Split(' ');
+                        newLevelButton.GetComponent<ButtonBehavior>().levelNumber = i + 1;
+                        //newLevelButton.GetComponent<ButtonBehavior>().levelNumber = int.Parse(buttonText[1]);
+                        Debug.Log(i);
                         buttonList.Add(newLevelButton);
                     }
                 }
@@ -96,6 +106,7 @@ namespace Proj3
                         buttonPos.x = (rowRemainder - 1) * buttonList[i - 1].GetComponent<RectTransform>().rect.width;
                     }
                     buttonList[i - 1].GetComponent<RectTransform>().localPosition = buttonPos;
+                    //buttonList[i - 1].GetComponent<Button>().onClick.AddListener(() => { LoadLevel(i); });
                 }
                 Destroy(levelTextObj);
             }
@@ -105,6 +116,12 @@ namespace Proj3
         void Update()
         {
 
+        }
+
+        public void LoadLevel(int levelNumber)
+        {
+            SceneManager.LoadScene("Level" + levelNumber);
+            Debug.Log(levelNumber);
         }
 
         public void SavePrefs() // called when a level is beaten, not called when the game is closed
