@@ -34,6 +34,11 @@ public class Draggable : MonoBehaviour
 		var rend = GetComponent<SpriteRenderer>();
 		if (rend != null)
 			rend.color = Color.white;
+
+		SpriteRenderer[] axesRenderers = GetComponentsInChildren<SpriteRenderer>(true);
+		if (axesRenderers != null && axesRenderers.Length > 1)
+			axesRenderers[1].enabled = true;
+
 		//var l = gameObject.AddComponent<Light>();
 		//l.type = LightType.Point;
 		//float r = Math.Max(GetComponent<Collider2D>().bounds.extents.x, GetComponent<Collider2D>().bounds.extents.y);

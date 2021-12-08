@@ -988,6 +988,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PosObst (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4325877759401121936, guid: e0062ae460c00474ba6a62ae2805a269,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4570841928644061975, guid: e0062ae460c00474ba6a62ae2805a269,
         type: 3}
       propertyPath: m_Color.r
