@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 namespace Proj3
 {
@@ -57,6 +60,9 @@ namespace Proj3
 
 		private bool levelCleared = false;
 
+		private GameObject nextLevelButton;
+		private Button nextLevelButtonScript;
+
 		void Start()
 		{
 			//if (warpPoint == null)
@@ -72,6 +78,13 @@ namespace Proj3
 			FindObjectOfType<CannonController>().OnReceptorReached += DebugWarpTo_ReceptorReached;
 
 			levelSelectionScript = levelSelectionObject.GetComponent<LevelSelection>();
+
+			nextLevelButton = GameObject.Find("NextLevelButton");
+			nextLevelButtonScript = nextLevelButton.GetComponent<Button>();
+			if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1)
+				nextLevelButton.GetComponentInChildren<Text>().text = "Start Over";
+
+			nextLevelButtonScript.interactable = false;
 		}
 
 		private void DebugWarpTo_ReceptorReached(object sender, System.EventArgs e)
@@ -83,6 +96,7 @@ namespace Proj3
 					respawnTextObj.text = "Congratulations! You've finished! To start over, press R.";
 			}
 			levelCleared = true;
+			nextLevelButtonScript.interactable = true;
 			if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings - 1)
 				levelSelectionScript.SavePrefs();
 		}

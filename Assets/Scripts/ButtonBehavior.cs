@@ -35,7 +35,13 @@ namespace Proj3
 
         public void LoadLevel()
         {
-            SceneManager.LoadScene(levelNumber - 1); //might have to change to just levelNumber if buildIndexes are changed to include levelSelect scene
+            if (SceneManager.GetActiveScene().name == "LevelSelect")
+                SceneManager.LoadScene(levelNumber - 1); //might have to change to just levelNumber if buildIndexes are changed to include levelSelect scene
+            else
+                if (SceneManager.GetActiveScene().buildIndex >= SceneManager.sceneCountInBuildSettings - 1)
+                    SceneManager.LoadScene(0);
+                else
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
         // Start is called before the first frame update
