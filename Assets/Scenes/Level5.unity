@@ -829,7 +829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79aaec8b026b0994c8906e6af63a8420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverScaleFactor: 1.5
+  hoverScaleFactor: 1.08
 --- !u!50 &407955820
 Rigidbody2D:
   serializedVersion: 4
@@ -1756,7 +1756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79aaec8b026b0994c8906e6af63a8420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverScaleFactor: 1.5
+  hoverScaleFactor: 1.08
 --- !u!50 &1267745716
 Rigidbody2D:
   serializedVersion: 4
@@ -1843,7 +1843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79aaec8b026b0994c8906e6af63a8420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverScaleFactor: 1.5
+  hoverScaleFactor: 1.08
 --- !u!50 &1315047141
 Rigidbody2D:
   serializedVersion: 4
@@ -2309,7 +2309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79aaec8b026b0994c8906e6af63a8420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverScaleFactor: 1.5
+  hoverScaleFactor: 1.08
 --- !u!58 &2110908915
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -126,7 +126,7 @@ public class Draggable : MonoBehaviour
 	/// </summary>
 	[SerializeField]
 	[Tooltip("The amount to scale the object by when mouse is hovering.")]
-	private float hoverScaleFactor = 1.5f;
+	private float hoverScaleFactor = 1.08f;
 	private void OnMouseEnter()
 	{
 		//origScale = transform.localScale;

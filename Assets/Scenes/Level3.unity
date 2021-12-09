@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79aaec8b026b0994c8906e6af63a8420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverScaleFactor: 1.5
+  hoverScaleFactor: 1.08
 --- !u!61 &5732878
 BoxCollider2D:
   m_ObjectHideFlags: 0
