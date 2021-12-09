@@ -80,11 +80,12 @@ namespace Proj3
 			levelSelectionScript = levelSelectionObject.GetComponent<LevelSelection>();
 
 			nextLevelButton = GameObject.Find("NextLevelButton");
-			nextLevelButtonScript = nextLevelButton.GetComponent<Button>();
-			if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1)
+			nextLevelButtonScript = nextLevelButton?.GetComponent<Button>();
+			if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1 && nextLevelButton!=null)
 				nextLevelButton.GetComponentInChildren<Text>().text = "Start Over";
 
-			nextLevelButtonScript.interactable = false;
+			if (nextLevelButton != null)
+				nextLevelButtonScript.interactable = false;
 		}
 
 		private void DebugWarpTo_ReceptorReached(object sender, System.EventArgs e)
@@ -96,7 +97,8 @@ namespace Proj3
 					respawnTextObj.text = "Congratulations! You've finished! To start over, press R.";
 			}
 			levelCleared = true;
-			nextLevelButtonScript.interactable = true;
+			if (nextLevelButtonScript != null)
+				nextLevelButtonScript.interactable = true;
 			if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings - 1)
 				levelSelectionScript.SavePrefs();
 		}
