@@ -90,26 +90,26 @@ public class CannonController : MonoBehaviour
 		*/
 		if (canRotate)
 		{
-			if (Input.GetKey(KeyCode.UpArrow) && transform.rotation.eulerAngles.z < 90)
+			if (Input.GetKey(KeyCode.UpArrow) && cannonRotation < 90)
 			{
-				//cannonRotation+=rotationSpeed;
-				transform.Rotate(new Vector3(0, 0, rotationSpeed));
+				cannonRotation+=rotationSpeed;
 			}
-			if (Input.GetKey(KeyCode.DownArrow) && transform.rotation.eulerAngles.z > -90)
+			if (Input.GetKey(KeyCode.DownArrow) && cannonRotation > -90)
 			{
-				//cannonRotation-=rotationSpeed;
-				transform.Rotate(new Vector3(0, 0, -rotationSpeed));
+				cannonRotation-=rotationSpeed;
 			}
 			if (useMouseAngle)
 			{
 				Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 				mousePos.z = 0;
-				transform.rotation = Quaternion.AngleAxis(180 / (Mathf.PI) * Mathf.Atan2(mousePos.y - transform.position.y, mousePos.x - transform.position.x), Vector3.forward);
+				cannonRotation = 180 / (Mathf.PI) * Mathf.Atan2(mousePos.y - transform.position.y, mousePos.x - transform.position.x);
 				// TODO: Fix rotation bounds
 			}
 		}
 
-		/*Vector3[] */positions = new Vector3[ParticleLimit];
+		transform.rotation = Quaternion.Euler(0, 0, cannonRotation);
+		/*Vector3[] */
+		positions = new Vector3[ParticleLimit];
 		bool collided = false;
 		positions[0] = tip.transform.position;
 		positions[0].z = 0;
